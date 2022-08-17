@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" type="png" href="images/icon/logo.png">
+    <!-- Title Page-->
+    <title>Registration | Ghar Joda</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!--Icon of Web-->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+
+    <!-- Main CSS-->
+    <link href="lcss/main.css" rel="stylesheet" media="all">
+
+    <script>
+
+        function login() {
+            var name = document.getElementById("name").value;
+            var name = document.getElementById("name").value;
+            var fathername = document.getElementById("fathername").value;
+            var mothername = document.getElementById("mothername").value;
+            var mobile = document.getElementById("mobile").value;
+            var email = document.getElementById("email").value;
+            var dateString = document.getElementById("dob").value;
+            var fulladdress = document.getElementById("address").value;
+            var city = document.getElementById("city").value;
+            var regex = /^[1-9]\d{9}$/;
+
+
+            //name validation
+
+            if (f_name == "" || f_name.length < 3) {
+                alert(" Please enter the valid First Name");
+                return false;
+            }
+
+            if (!isNaN(f_name)) {
+
+                alert("First name should be in character");
+
+                return false;
+
+            }
+
+            if (l_name == "" || l_name.length < 3) {
+                alert(" Please enter the valid Last Name");
+                return false;
+            }
+
+            if (!isNaN(l_name)) {
+
+                alert("Last name should be in character");
+
+                return false;
+
+            }
+
+            //date of birth validation
+            var true1 = ValidateDOB();
+            if (true1 == false) {
+                return false;
+            }
+            //email validation               
+            var char = email.charAt(0);
+            if (email == '') {
+                alert("Enter your Email");
+                return false;
+            }
+            if (char == '0' || char == '1' || char == '2' || char == '3' || char == '4' || char == '5' || char == '6' || char == '7' || char == '8' || char == '9') {
+                alert("email is not valid!");
+                return false;
+            }
+
+
+            //Mobile Phone validation
+
+            if (mobile == "") {
+                alert(" Please enter a  mobile no");
+                return false;
+
+            }
+
+            if (regex.test(mobile) === false) {
+                alert("please enter a valid mobile no");
+                return false;
+            }
+            //Address validation
+            if (fulladdress == null || fulladdress == "" || fulladdress.length < 10) {
+                alert("Current address can't be blank or less then 10 character");
+                return false;
+            }
+
+            //city validation.             
+            if (city == "") {
+                alert("Please enter your city");
+                return false;
+            }
+
+
+            // course validation
+
+            if (course == "") {
+                alert("select a course");
+                return false;
+
+            }
+
+
+
+        }
+        function ValidateDOB() {
+
+
+            //Get the date from the TextBox.
+            var dateString = document.getElementById("dob").value;
+            var regex = /(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/;
+
+            //Check whether valid dd/MM/yyyy Date Format.
+            if (regex.test(dateString)) {
+                var parts = dateString.split("/");
+                var dtDOB = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+                var dtCurrent = new Date();
+
+                if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 18) {
+                    alert("your age should be mimimum 18 years");
+
+                    return false;
+                }
+
+                if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 18) {
+
+
+                    if (dtCurrent.getMonth() < dtDOB.getMonth()) {
+                        alert("your age should be mimimum 18 years");
+                        return false;
+                    }
+                    if (dtCurrent.getMonth() == dtDOB.getMonth()) {
+
+                        if (dtCurrent.getDate() < dtDOB.getDate()) {
+                            alert("your age should be mimimum 18 years");
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            } else {
+                alert("Enter date in dd/MM/yyyy format ONLY.");
+                return false;
+            }
+        }
+    </script>
+
+
+
+    <!-- <script>
+        function validate() {
+
+           
+            
+
+
+            var f_name = document.getElementById("f_name").value;
+            var l_name = document.getElementById("l_name").value;
+
+          
+
+
+            
+
+            if (f_name == "" || f_name.length < 3) {
+                alert(" Please enter the valid First Name");
+                return false;
+            }
+
+            if (!isNaN(f_name)) {
+
+                alert("name should be in character");
+
+                return false;
+
+            }
+
+            if (l_name == "" || l_name.length < 3) {
+                alert(" Please enter the valid First Name");
+                return false;
+            }
+
+            if (!isNaN(l_name)) {
+
+                alert("name should be in character");
+
+                return false;
+
+            }
+
+
+            // address validation
+
+            var fulladdress = document.getElementById("address").value;
+
+             if (fulladdress == null || fulladdress == "" || fulladdress.length < 10) {
+                  alert("Current address can't be blank or less then 10 character");
+                  return false;
+             }
+            // city validation
+            var city = document.getElementById("city").value;
+            if (city == "") {
+
+                alert("Please select a city");
+
+                return false;
+
+            }
+            // DOB validation
+             //Get the date from the TextBox.
+            var dateString = document.getElementById("dob").value;
+            var regex = /(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/;
+     
+            //Check whether valid dd/MM/yyyy Date Format.
+            if (regex.test(dateString)) {
+                var parts = dateString.split("/");
+                var dtDOB = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+                var dtCurrent = new Date();
+               
+                if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 10) {
+                    alert("Enter your valid date");
+                    return false;
+                }
+     
+                if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 10) {
+     
+                    
+                    if (dtCurrent.getMonth() < dtDOB.getMonth()) {
+                        return false;
+                    }
+                    if (dtCurrent.getMonth() == dtDOB.getMonth()) {
+                        
+                        if (dtCurrent.getDate() < dtDOB.getDate()) {
+                            return false;
+                        }
+                    }
+                }
+                
+                return true;
+            } else {
+                alert("Enter date in dd/MM/yyyy format ONLY.");
+                return false;
+            }
+
+            var mobile = document.getElementById("mobile").value;
+            if (mobile == "") {
+
+                alert(" Please enter a  mobile no");
+
+                return false;
+
+            }
+            var regex = /^[1-9]\d{9}$/;
+            if (regex.test(mobile) === false) {
+
+                alert("please enter a valid mobile no");
+
+                return false;
+
+            }
+
+
+
+
+
+            // course validation
+
+            if (course == "") {
+
+                alert("select a course");
+
+                return false;
+
+            }
+
+            // email validation
+            var email = document.getElementById("email").value;
+            var atposition = email.indexOf("@");
+
+            var dotposition = email.lastIndexOf(".");
+
+            if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+
+
+                alert("Please enter a valid e-mail address like name@xyz.com \:" + atposition + "\:" + dotposition);
+
+                return false;
+
+
+
+            }
+            else {
+                alert("saved");
+            }
+        }
+
+
+    </script> -->
+</head>
+
+<body>
+
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins"
+        style="background: linear-gradient(to top right, #778cd9 0%, #adbd7b 100%);">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <center>
+                        <h2 class="title"
+                            style="font-size: 30px; font-weight: 600; font-family: 'Roboto', sans-serif; color: red; text-transform: uppercase; text-shadow: 1px 1px 0px #957dad, 1px 2px 0px #957dad, 1px 3px 0px #957dad, 1px 4px 0px #957dad, 1px 5px 0px #957dad, 1px 6px 0px #957dad, 1px 10px 5px rgba(16, 16, 16, 0.5), 1px 15px 10px rgba(16, 16, 16, 0.4), 1px 20px 30px rgba(16, 16, 16, 0.3), 1px 25px 50px rgba(16, 16, 16, 0.2); ">
+                            Registration Form</h2>
+                    </center>
+                    <form name="myform" method="post" action="email/reg.php">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+
+                                    <label class="label"><i class="fas fa-user-graduate"
+                                            style="color:green;font-size:20px"></i> &nbsp; &nbsp; <span
+                                            style="color:red">Name</span><span style="color:blue"
+                                            class="imp">&nbsp;*</span></label>
+                                    <input class="input--style-4" id="name" type="text" name="name" minlength="3"
+                                        maxlength="20"
+                                        pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$"
+                                        placeholder="First name" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label"> &nbsp; &nbsp;</label>
+                                    <input class="input--style-4" id="name" type="text" name="name" minlength="3"
+                                        maxlength="20"
+                                        pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$"
+                                        placeholder="Last name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label"><i class="fas fa-male"
+                                            style="color:green;font-size:20px"></i>&nbsp; &nbsp;<span
+                                            style="color:red">Father</span><span style="color:blue"
+                                            class="imp">&nbsp;*</span></label>
+                                    <input class="input--style-4" type="text" id="fathername" name="fathername"
+                                        placeholder="Enter Your Father Name" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label"><i class="fas fa-female"
+                                            style="color:green;font-size:20px"></i>&nbsp; &nbsp;<span
+                                            style="color:red">Mother</span><span style="color:blue"
+                                            class="imp">&nbsp;*</span></label>
+                                    <input class="input--style-4" type="text" id="mothername" name="mothername"
+                                        pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$"
+                                        placeholder="Enter Your Mother Name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+
+                                    <label class="label"><i class="fas fa-birthday-cake"
+                                            style="color:green;font-size:20px"></i>&nbsp; &nbsp;<span
+                                            style="color:red">Date of Birth:</span><span style="color:blue"
+                                            class="imp">&nbsp;*</span></label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="text" id="dob" name="dob"
+                                            pattern="^(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$"
+                                            placeholder=" Enter your Date Of Birth" required>
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label"><i class="fas fa-venus-mars"
+                                            style="color:green;font-size:20px"></i>&nbsp; &nbsp;<span
+                                            style="color:red">Gender</span><span style="color:blue"
+                                            class="imp">&nbsp;*</span></label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">
+                                            Male
+                                            <input type="radio" value="Male" name="gender" id="male" checked>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">
+                                            Female
+                                            <input type="radio" value="Female" id="female" name="gender">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label"><i class="fas fa-envelope"
+                                            style="color:green;font-size:20px"></i>&nbsp; &nbsp;<span
+                                            style="color:red">Email</span><span style="color:blue"
+                                            class="imp">&nbsp;*</span></label>
+                                    <input class="input--style-4" type="email" id="email" lang="en" maxlength="254"
+                                        pattern="(?![_.-])((?![_.-][_.-])[a-zA-Z\d_.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}"
+                                        name="email" placeholder="Enter your Email Id" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label"><i class="fas fa-phone"
+                                            style="color:green;font-size:20px"></i>&nbsp; &nbsp;<span
+                                            style="color:red">Phone Number</span><span style="color:red"
+                                            class="imp">&nbsp;*</span></label>
+                                    <input class="input--style-4" type="text" name="mobile" maxlength="10"
+                                        pattern="^[1-9]\d{9}$"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                        id="mobile" placeholder="Enter your Phone No" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label"><i class="fas fa-address-card"
+                                            style="color:green;font-size:20px"></i>&nbsp; &nbsp;<span
+                                            style="color:red">Address</span><span style="color:red"
+                                            class="imp">&nbsp;*</span></label>
+                                    <input class="input--style-4" type="text" id="address" name="address" minlength="6"
+                                        placeholder="Enter your Address" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label"><i class="fas fa-city"
+                                            style="color:green;font-size:20px"></i>&nbsp; &nbsp;<span
+                                            style="color:red">City</span><span style="color:red"
+                                            class="imp">&nbsp;*</span></label>
+                                    <input class="input--style-4" type="text" id="city" name="city"
+                                        pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*)$"
+                                        placeholder="Enter your City" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" onclick=" return login()"
+                                type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- <script type="text/javascript">
+        function ValidateDOB() {
+            
+     
+            //Get the date from the TextBox.
+            var dateString = document.getElementById("dob").value;
+            var regex = /(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/;
+     
+            //Check whether valid dd/MM/yyyy Date Format.
+            if (regex.test(dateString)) {
+                var parts = dateString.split("/");
+                var dtDOB = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+                var dtCurrent = new Date();
+               
+                if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 18) {
+                    alert("Enter your valid date");
+                    
+                    return false;
+                }
+     
+                if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 18) {
+     
+                    
+                    if (dtCurrent.getMonth() < dtDOB.getMonth()) {
+                        return false;
+                    }
+                    if (dtCurrent.getMonth() == dtDOB.getMonth()) {
+                        
+                        if (dtCurrent.getDate() < dtDOB.getDate()) {
+                            return false;
+                        }
+                    }
+                }
+                
+                return true;
+            } else {
+                alert("Enter date in dd/MM/yyyy format ONLY.");
+                return false;
+            }
+        }
+    </script> -->
+
+    <script type="text/javascript">
+        function clearThis(target) {
+            target.value = "";
+        }
+    </script>
+    <!-- Main JS-->
+    <script src="global.js"></script>
+
+</body>
+
+</html>
